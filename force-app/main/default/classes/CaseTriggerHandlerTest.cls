@@ -116,7 +116,7 @@ private class CaseTriggerHandlerTest {
         for (Integer i = 0; i < 1000; i++) {
             casesToInsert.add(new Case(
                 AccountId = acc.Id,
-                Status = openStatuses[0] /
+                Status = openStatuses[0] 
             ));
         }
 
