@@ -34,6 +34,15 @@ public with sharing class CaseTriggerHandler extends TriggerHandler{
 
     public void countCasesPerAccount(Set<Id> accountsId){
 
+        Set<String> closedStatusesSet = new Set<String>();
+        for (Closed_Cases_Status__mdt record : [SELECT MasterLabel FROM Closed_Cases_Status__mdt]) {
+            closedStatusesSet.add(record.MasterLabel);
+        }
+
+        Set<String> openStatusesSet = new Set<String>();
+        for (Open_Cases_Status__mdt record : [SELECT MasterLabel FROM Open_Cases_Status__mdt]) {
+            openStatusesSet.add(record.MasterLabel);
+        }
 
         Map<Id, Account> accountsMap = new Map<Id, Account>(
             [SELECT Id, Number_of_closed_cases__c, Number_of_open_cases__c 
